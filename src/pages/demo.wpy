@@ -1,0 +1,36 @@
+<template>
+  <view @tap="goIndex">我是demo页面</view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Demo extends wepy.page {
+    
+
+    data = {
+    }
+
+    computed = {
+      now () {
+        return +new Date()
+      }
+    }
+
+    methods = {
+      goIndex() {
+        this.$redirect('./index');
+      }
+    }
+
+    events = {
+    }
+
+    onLoad() {
+    }
+  }
+</script>
+
+<style lang="less">
+  
+</style>

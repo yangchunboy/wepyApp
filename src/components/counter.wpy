@@ -39,7 +39,7 @@
     asyncNum (state) {
       return state.counter.asyncNum
     }
-  }, {
+  }, { 
     incNum: INCREMENT,
     decNum: DECREMENT,
     asyncInc
