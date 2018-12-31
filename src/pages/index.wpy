@@ -1,9 +1,13 @@
 <template>
-  <text class="home" @tap="goDemo">我是首页</text>
+  <view>
+    <text class="home" @tap="goRoute('demo')">我是首页</text>
+    <Test></Test>
+  </view>
 </template>
 
 <script>
 import wepy from 'wepy';
+import Test from '../components/home/test';
 
 export default class Index extends wepy.page {
   data = {
@@ -12,9 +16,13 @@ export default class Index extends wepy.page {
   computed = {
   }
 
+  components = {
+    Test,
+  }
+
   methods = {
-    goDemo() {
-      this.$redirect('./demo')
+    goRoute(routName) {
+      this.$redirect(`./${routName}`)
     }
   }
 

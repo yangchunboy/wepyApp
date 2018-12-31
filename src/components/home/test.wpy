@@ -1,0 +1,29 @@
+<template>
+  <div class="test">我的颜色是红色</div>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Test extends wepy.component {
+  components = {
+
+  }
+
+  data = {
+
+  }
+  methods = {
+
+  }
+  events = {
+
+  }
+}
+</script>
+
+<style lang="less">
+  .test {
+    color: red;
+  }
+</style>
