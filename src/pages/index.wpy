@@ -3,25 +3,21 @@
 </template>
 
 <script>
-import wepy from 'wepy'
+import wepy from 'wepy';
 
 export default class Index extends wepy.page {
-  
-
   data = {
   }
 
   computed = {
-    now () {
-      return +new Date()
-    }
   }
 
   methods = {
     goDemo() {
-      this.$redirect('./demo');
+      this.$redirect('./demo')
     }
   }
+
 
   events = {
   }

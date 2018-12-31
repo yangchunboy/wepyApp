@@ -6,8 +6,6 @@
   import wepy from 'wepy'
 
   export default class Demo extends wepy.page {
-    
-
     data = {
     }
 
@@ -19,7 +17,7 @@
 
     methods = {
       goIndex() {
-        this.$redirect('./index');
+        this.$redirect('./index')
       }
     }
 
