@@ -8,6 +8,7 @@
 <script>
 import wepy from 'wepy';
 import Test from '../components/home/test';
+import api from '../api/index';
 
 export default class Index extends wepy.page {
   data = {
@@ -26,11 +27,12 @@ export default class Index extends wepy.page {
     }
   }
 
-
   events = {
   }
 
-  onLoad() {
+  async onLoad() {
+    const result = await api.getIp({});
+    console.log(result);
   }
 }
 </script>

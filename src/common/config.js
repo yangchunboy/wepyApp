@@ -5,8 +5,5 @@
  * 用于存放一些配置参数
  */
 
-const HOST = 'https://localhost:3000';
+export const HOST = 'http://192.168.199.193:8000';
 
-export default {
-  HOST
-};
