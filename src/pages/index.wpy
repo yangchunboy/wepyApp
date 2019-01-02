@@ -20,6 +20,8 @@ export default class Index extends wepy.page {
   components = {
     Test,
   }
+  
+  mixins = []
 
   methods = {
     goRoute(routName) {
