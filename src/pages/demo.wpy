@@ -9,14 +9,14 @@
 </template>
 
 <script>
-  import wepy from 'wepy';
-  import { connect } from 'wepy-redux';
-  import { INCREMENT, DECREMENT  } from '../store/types/counter';
+  import wepy from 'wepy'
+  import { connect } from 'wepy-redux'
+  import { INCREMENT, DECREMENT } from '../store/types/counter'
 
   @connect({
     getNumber(state) {
-      console.log(state);
-      return state.counter.num;
+      console.log(state)
+      return state.counter.num
     }
   }, {
     INCREMENT,
@@ -36,15 +36,15 @@
     methods = {
       goIndex() {
         this.$redirect('./index')
-      },
+      }
     }
 
     events = {
     }
 
     onLoad() {
-      console.log(this);
-      this.methods.INCREMENT(1);
+      console.log(this)
+      this.methods.INCREMENT(1)
     }
   }
 </script>

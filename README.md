@@ -25,3 +25,9 @@ src/
 app.wpy  #wepy的入口文件
 index.template.html #wepy的模板html
 ```
+
+## 使用方法
+1. 更新最新的iconfont
+将iconfont里的font-class里的css下载下来，替换到src/lib/iconfont.less即可
+
+2. eslint用的standard，查看规则文档[eslint standard文档](https://github.com/standard/standard/blob/master/docs/RULES-zhcn.md)
