@@ -18,9 +18,9 @@ export default class Index extends wepy.page {
   }
 
   components = {
-    Test,
+    Test
   }
-  
+
   mixins = []
 
   methods = {

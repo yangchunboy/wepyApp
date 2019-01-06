@@ -4,6 +4,7 @@
     <view>当前数字是{{getNumber}}</view>
     <view @tap="INCREMENT">点击数字加一</view>
     <view @tap="DECREMENT">点击数字减一</view>
+    <view>我是icon<i class="iconfont icon-home1"></i></view>
   </view>
 </template>
 

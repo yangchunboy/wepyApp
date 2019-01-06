@@ -1,5 +1,5 @@
 <template>
-  <div class="test">我的颜色是红色</div>
+  <view class="test">我的颜色是红色</view>
 </template>
 
 <script>
