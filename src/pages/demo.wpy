@@ -10,18 +10,6 @@
 
 <script>
   import wepy from 'wepy'
-  import { connect } from 'wepy-redux'
-  import { INCREMENT, DECREMENT } from '../store/types/counter'
-
-  @connect({
-    getNumber(state) {
-      console.log(state)
-      return state.counter.num
-    }
-  }, {
-    INCREMENT,
-    DECREMENT
-  })
 
   export default class Demo extends wepy.page {
     data = {
