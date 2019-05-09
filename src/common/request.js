@@ -1,15 +1,22 @@
 import wepy from 'wepy'
 import { HOST } from './config'
 
-const wxRequest = async ({ params = {}, url }) => {
-  let data = params.query || {}
-  const result = wepy.request({
-    url: `${HOST}/api/${url}`,
-    method: params.method || 'GET',
-    data,
+const request = ({ route, params, method }) => {
+  const url = `${HOST}/api/${route}`
+  return wepy.request({
+    url,
+    method,
+    data: params,
     header: { 'Content-Type': 'application/json' }
   })
+}
+
+export const get = async (route, params) => {
+  const result = await request({ route, params, method: 'GET' })
   return result
 }
 
-export default wxRequest
+export const post = async (route, params) => {
+  const result = await request({ route, params, method: 'POST' })
+  return result
+}
