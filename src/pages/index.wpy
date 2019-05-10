@@ -1,6 +1,6 @@
 <template>
   <view>
-    <text class="home" @tap="goRoute('demo')">我是首页</text>
+    <text class="home" @tap="goRoute('demo')">跳去state例子页面</text>
     <Test></Test>
   </view>
 </template>

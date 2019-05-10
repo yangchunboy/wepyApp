@@ -6,11 +6,11 @@
 import wepy from 'wepy'
 import 'wepy-async-function'
 
-import { setStore } from 'wepy-redux'
-import configStore from './store'
+import configStore from './store/createStore'
 
 const store = configStore()
-setStore(store)
+
+wepy.$store = store
 
 export default class extends wepy.app {
   config = {

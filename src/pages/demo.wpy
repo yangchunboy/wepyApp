@@ -1,15 +1,14 @@
 <template>
   <view>
-    <view @tap="goIndex">我是demo页面</view>
-    <view>当前数字是{{getNumber}}</view>
-    <view @tap="INCREMENT">点击数字加一</view>
-    <view @tap="DECREMENT">点击数字减一</view>
-    <view>我是icon<i class="iconfont icon-home1"></i></view>
+    <view @tap="init">初始化用户信息</view>
+    <view @tap="update">更新用户信息</view>
+    <view @tap="getUserInfo">点击输出用户信息</view>
   </view>
 </template>
 
 <script>
   import wepy from 'wepy'
+  import { userInit, userUpdate } from '../store/index'
 
   export default class Demo extends wepy.page {
     data = {
@@ -24,6 +23,24 @@
     methods = {
       goIndex() {
         this.$redirect('./index')
+      },
+      init() {
+        const userInfo = {
+          name: '张三',
+          age: 22
+        }
+        wepy.$store.dispatch(userInit(userInfo))
+      },
+      update() {
+        const userInfo = {
+          name: '李四',
+          age: 24
+        }
+        wepy.$store.dispatch(userUpdate(userInfo))
+      },
+      getUserInfo() {
+        const state = wepy.$store.getState()
+        console.log(state)
       }
     }
 
@@ -32,7 +49,6 @@
 
     onLoad() {
       console.log(this)
-      this.methods.INCREMENT(1)
     }
   }
 </script>
