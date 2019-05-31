@@ -1,0 +1,148 @@
+<template>
+  <view class="cartItem">
+    <view class="select" @tap="selectProduct({{ product }})">
+      <van-checkbox value="{{ product.selected  }}"></van-checkbox>
+    </view>
+    <view class="content">
+      <view class="imgContainer" style="background-image: url('http://git.xian62.com/uploads/user/avatar/4/avatar.png" ></view>
+      <view class="detail">
+        <view class="title-wrp">
+          <view class="name">{{ product.name }}</view>
+          <view class="description">{{ product.descrption }}</view>
+          <view class="delete">
+            <i class="iconfont icon-delete" />
+          </view>
+        </view>
+        <view class="info">
+          <view class="price">￥{{ product.price }}</view>
+          <view class="shipping">
+            <view class="add-button">
+              <i class="iconfont icon-reduce" @tap="minus({{product}})"></i>
+              <text class="cart-amount">{{ product.amount }}</text>
+              <i class="iconfont icon-add" @tap="plus({{product}})"></i>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Test extends wepy.component {
+  config = {
+    usingComponents: {
+    }
+  }
+  components = {
+  }
+  data = {
+  }
+  props = {
+    product: {
+      type: Object
+    }
+  }
+
+  computed = {
+  }
+
+  methods = {
+    selectProduct(product) {
+      this.$emit('selectProduct', product)
+    },
+    plus(product) {
+      // console.log(product)
+      this.$emit('plus', product)
+    },
+    minus(product) {
+      this.$emit('minus', product)
+    }
+  }
+  events = {
+  }
+}
+</script>
+
+<style lang="less">
+  @import '../../theme/index';
+
+  .cartItem {
+    width: 100%;
+    height: 200rpx;
+    display: flex;
+    padding: @commonMargin @commonPadding;
+    background-color: white;
+
+    .select {
+      width: 70rpx;
+      flex: none;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .content {
+      flex: 1;
+      display: flex;
+      .imgContainer {
+        width: 150rpx;
+        height: 150rpx;
+        flex: none;
+        background-repeat:no-repeat;
+        background-size:100% 100%;
+        margin-right: @commonMargin;
+      }
+      .detail {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .title-wrp {
+          margin-right: 60rpx;
+          position: relative;
+
+          .delete {
+            color: #999;
+            position: absolute;
+            right: -40rpx;
+            top: 0;
+          }
+        }
+        .name {
+          font-size: @title;
+        }
+        .description {
+          font-size: 25rpx;
+          color: @subTitleColor;
+        }
+        .info {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          .price {
+            color: @priceColor;
+            font-size: 40rpx;
+          }
+          .shipping {
+
+            &-step {
+
+            }
+            .plus,
+            .minus {
+              width: 50rpx;
+              height: 50rpx;
+            }
+            .inputClass {
+              width: 70rpx;
+              height: 50rpx;
+            }
+          }
+        }
+      }
+    }
+  }
+</style>

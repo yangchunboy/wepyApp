@@ -1,0 +1,158 @@
+<template>
+  <view id="shopCar">
+    <view>
+      <repeat for="{{ productList }}" item="item">
+        <CartItem
+          :product="item"
+        />
+      </repeat>
+    </view>
+    <van-submit-bar
+      price="{{ totalPrice }}"
+      disabled="{{ noSelected }}"
+      button-text="提交订单"
+      bind:submit="submitOrder"
+      tip="{{ false }}"
+      bar-class="shopcar-submit"
+      price-class="shopcarPrice"
+    >
+      <view class="selectAll">
+        <van-checkbox value="{{ isSelectedAll }}" bind:change="selectAll">全选</van-checkbox>
+      </view>
+    </van-submit-bar>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import CartItem from '../components/shopCar/cartItem'
+import Big from 'big.js'
+
+export default class Index extends wepy.page {
+  config = {
+    usingComponents: {
+      'van-checkbox': '../components/vant/checkbox/index',
+      'van-submit-bar': '../components/vant/submit-bar/index'
+    }
+  }
+
+  data = {
+    productList: [
+      {
+        _id: '1',
+        name: '苹果',
+        descrption: '我是苹果',
+        amount: 1,
+        price: 9.99,
+        selected: false
+      },
+      {
+        _id: '2',
+        name: '杨梅',
+        descrption: '仙居杨梅',
+        amount: 2,
+        price: 20,
+        selected: false
+      }
+    ],
+    noSelected: false
+  }
+
+  computed = {
+    totalPrice() {
+      const { productList } = this
+      let total = 0
+      productList.forEach((item) => {
+        if (item.selected) {
+          const price = new Big(item.price).times(item.amount)
+          total = new Big(total).plus(price)
+        }
+      })
+      return parseFloat(total.toFixed(2), 10) * 100
+    },
+    isSelectedAll() {
+      const { productList } = this
+      let selectedAmount = 0
+      productList.forEach((item) => {
+        if (item.selected) {
+          selectedAmount++
+        }
+      })
+      if (selectedAmount === productList.length) {
+        return true
+      }
+      return false
+    }
+  }
+
+  components = {
+    CartItem
+  }
+
+  mixins = []
+
+  events = {
+    plus(product) {
+      console.log(product)
+      const { productList } = this
+      productList.forEach((item) => {
+        if (product._id === item._id) {
+          item.amount = item.amount + 1
+        }
+      })
+      this.productList = productList
+    },
+    minus(product) {
+      const { productList } = this
+      if (product.amount === 1) return
+      productList.forEach((item) => {
+        if (product._id === item._id) {
+          item.amount = item.amount - 1
+        }
+      })
+      this.productList = productList
+    },
+    selectProduct(product) {
+      const { productList } = this
+      productList.forEach((item) => {
+        if (product._id === item._id) {
+          item.selected = !item.selected
+        }
+      })
+      this.productList = productList
+    }
+  }
+
+  methods = {
+    goRoute(routName) {
+      this.$redirect(`./${routName}`)
+    },
+    selectAll() {
+      const { isSelectedAll, productList } = this
+      let selected = false
+      if (!isSelectedAll) {
+        selected = true
+      }
+      productList.forEach((item) => {
+        item.selected = selected
+      })
+      this.productList = productList
+    }
+  }
+
+  async onLoad() {
+    // const result = await api.getIp({})
+    // console.log(result)
+  }
+}
+</script>
+
+<style lang="less">
+@import '../theme/index';
+#shopCar {
+  .selectAll {
+    padding-left: @commonPadding;
+  }
+}
+
+</style>

@@ -7,7 +7,9 @@ const request = ({ route, params, method }) => {
     url,
     method,
     data: params,
-    header: { 'Content-Type': 'application/json' }
+    header: {
+      'Content-Type': 'application/json'
+    }
   })
 }
 

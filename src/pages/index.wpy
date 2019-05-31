@@ -2,6 +2,10 @@
   <view>
     <text class="home" @tap="goRoute('demo')">跳去state例子页面</text>
     <Test></Test>
+    <van-cell
+      title="vantdemo"
+      is-link="{{true}}"
+    />
   </view>
 </template>
 
@@ -10,6 +14,12 @@ import wepy from 'wepy'
 import Test from '../components/home/test'
 
 export default class Index extends wepy.page {
+  config = {
+    usingComponents: {
+      'van-cell': '../components/vant/cell/index'
+    }
+  }
+
   data = {
   }
 

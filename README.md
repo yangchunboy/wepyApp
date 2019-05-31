@@ -15,6 +15,7 @@ npm run dev  // 编译
 ```
 src/
   api/         #请求的接口的位置
+  assets/      #放静态资源图片等
   common/        #公共的配置文件和公共方法的位置
   components/  #用于存放所有页面的子组件
   lib/      #存储第三方库

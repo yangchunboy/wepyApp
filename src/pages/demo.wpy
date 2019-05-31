@@ -3,6 +3,7 @@
     <view @tap="init">初始化用户信息</view>
     <view @tap="update">更新用户信息</view>
     <view @tap="getUserInfo">点击输出用户信息</view>
+    <view @tap="goIndex">点击回到首页</view>
   </view>
 </template>
 

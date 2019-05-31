@@ -1,0 +1,32 @@
+@import './index';
+page {
+  background-color: @bgColor;
+}
+
+.add-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 40rpx;
+  bottom: 10rpx;
+  width: 154rpx;
+  height: 56rpx;
+  border-radius: 46rpx;
+  font-size: 24rpx;
+  &.invalid {
+    opacity: 0.4;
+  }
+  .icon-reduce {
+    font-size: 54rpx;
+    color: @textColor;
+  }
+  .icon-add {
+    font-size: 48rpx;
+    color: @primaryColor;
+  }
+  .cart-amount {
+    display: inline-block;
+    width: 100px;
+    text-align:center;
+  }
+}
